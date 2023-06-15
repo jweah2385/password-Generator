@@ -26,16 +26,33 @@ function writePassword() {
     var lowerCase = prompt('Do you want lowercase characters in your password').toLowerCase();
     var numeric = prompt('Do you want numbers').toLowerCase();
     var specialChar = prompt('Do you want special characters').toLowerCase();
-  } while ((!((upperCase == "yes") || (upperCase == "no"))) && 
-            !((lowerCase == "yes") || ( lowerCase == "no")) &&
-            !((numeric == "yes") || (numeric == "no")) &&
-            !((specialChar== "yes") || (specialChar == "no"))) ;
-
+  } while ((!((upperCase == "yes") || (upperCase == "no"))) || 
+            !((lowerCase == "yes") || ( lowerCase == "no")) ||
+            !((numeric == "yes") || (numeric == "no")) ||
+            !((specialChar== "yes") || (specialChar == "no"))) ;    
   console.log(upperCase);
   console.log(lowerCase);
   console.log(numeric);
-  console.log(specialChar);          
-  var password = generatePassword();
+  console.log(specialChar);   
+  
+  
+  var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  var numbers = "0123456789";
+  var sChar = `!"#$%&"()*,-._>=:|~'?;`
+
+  function generatePassword() {
+    var password = "";
+    //Where the password will be generated
+    for(let i = 0; i < passLength; i++) {
+      var prac = Math.random(numbers)
+      password = prac;
+    }
+
+    return password;
+  }
+  console.log(generatePassword());
+  //var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -44,3 +61,8 @@ function writePassword() {
 // Add event listener to generate button
 
 generateBtn.addEventListener('click', writePassword);
+
+
+//if((upperCase == "yes") && (lowerCase == "yes") && (specialChar == "yes")) {
+
+//}else if (upperCase == "yes")
