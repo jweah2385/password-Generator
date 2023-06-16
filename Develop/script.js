@@ -4,7 +4,7 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
   //Getting user length, varifying length size of 8=128
-  
+
   do {
     let passL = prompt(
       'How long do you want your password to be, it must ' +
@@ -36,7 +36,9 @@ function writePassword() {
     !(upperCase == 'yes' || upperCase == 'no') ||
     !(lowerCase == 'yes' || lowerCase == 'no') ||
     !(numeric == 'yes' || numeric == 'no') ||
-    !(specialChar == 'yes' || specialChar == 'no')
+    !(specialChar == 'yes' || specialChar == 'no') ||
+    (upperCase === 'no' && lowerCase === 'no' && numeric === 'no' && specialChar === 'no')
+  
   );
   console.log(upperCase);
   console.log(lowerCase);
@@ -53,26 +55,24 @@ function writePassword() {
   var numbers = '0123456789';
   var sChar = `!"#$%&"()*,-._>=:|~'?;`;
 
-  var onlyUpperCase = upperCaseLetters;
+  var onlyUpperCase = upperCaseLetters; //AD
   var onlyLowerCase = lowerCaseLetters;
   var onlyNumbers = numbers;
   var onlySpecialChars = sChar;
 
-  var upperAndLowerCase = upperCaseLetters + lowerCaseLetters;
-  var upperAndNumbers = upperCaseLetters + numbers;
-  var upperAndSpecialChars = upperCaseLetters + sChar;
-  var lowerAndNumbers = lowerCaseLetters + numbers;
-  var lowerAndSpecialChars = lowerCaseLetters + sChar;
-  var numbersAndSpecialChars = numbers + sChar;
+  var upperAndLowerCase = upperCaseLetters + lowerCaseLetters; //AD
+  var upperAndNumbers = upperCaseLetters + numbers; //AD
+  var upperAndSpecialChars = upperCaseLetters + sChar; //AD
+  var lowerAndNumbers = lowerCaseLetters + numbers; //AD
+  var lowerAndSpecialChars = lowerCaseLetters + sChar; //AD
+  var numbersAndSpecialChars = numbers + sChar; //AD
 
-  var upperLowerAndNumbers = upperCaseLetters + lowerCaseLetters + numbers;//AD
-  var upperLowerAndSpecialChars = upperCaseLetters + lowerCaseLetters + sChar;
-  var upperNumbersAndSpecialChars = upperCaseLetters + numbers + sChar;
-  var lowerNumbersAndSpecialChars = lowerCaseLetters + numbers + sChar;
+  var upperLowerAndNumbers = upperCaseLetters + lowerCaseLetters + numbers; //AD
+  var upperLowerAndSpecialChars = upperCaseLetters + lowerCaseLetters + sChar; //AD
+  var upperNumbersAndSpecialChars = upperCaseLetters + numbers + sChar; //AD
+  var lowerNumbersAndSpecialChars = lowerCaseLetters + numbers + sChar; //AD
 
-  var allChars = upperCaseLetters + lowerCaseLetters + numbers + sChar;//AD
-
-
+  var allChars = upperCaseLetters + lowerCaseLetters + numbers + sChar; //AD
 
   if (
     upperCase == 'yes' &&
@@ -83,11 +83,10 @@ function writePassword() {
     // Combination 1
     var randomString = '';
     function generateRandomString(allChars, passLength) {
-      
       for (var i = 0; i < passLength; i++) {
         var randomIndex = Math.floor(Math.random() * allChars.length);
         randomString += allChars[randomIndex];
-      }  
+      }
     }
 
     generateRandomString(allChars, passLength);
@@ -101,11 +100,12 @@ function writePassword() {
     // Combination 2
     var randomString = '';
     function generateRandomString(upperLowerAndNumbers, passLength) {
-      
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * upperLowerAndNumbers.length);
+        var randomIndex = Math.floor(
+          Math.random() * upperLowerAndNumbers.length
+        );
         randomString += upperLowerAndNumbers[randomIndex];
-      }  
+      }
     }
 
     generateRandomString(upperLowerAndNumbers, passLength);
@@ -118,15 +118,16 @@ function writePassword() {
   ) {
     // Combination 3
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(upperLowerAndSpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(
+          Math.random() * upperLowerAndSpecialChars.length
+        );
+        randomString += upperLowerAndSpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(upperLowerAndSpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'yes' &&
@@ -136,15 +137,14 @@ function writePassword() {
   ) {
     // Combination 4
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(upperAndLowerCase, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * upperAndLowerCase.length);
+        randomString += upperAndLowerCase[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(upperAndLowerCase, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'yes' &&
@@ -154,15 +154,16 @@ function writePassword() {
   ) {
     // Combination 5
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(upperNumbersAndSpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(
+          Math.random() * upperNumbersAndSpecialChars.length
+        );
+        randomString += upperNumbersAndSpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(upperNumbersAndSpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'yes' &&
@@ -172,15 +173,14 @@ function writePassword() {
   ) {
     // Combination 6
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(upperAndNumbers, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * upperAndNumbers.length);
+        randomString += upperAndNumbers[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(upperAndNumbers, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'yes' &&
@@ -190,15 +190,16 @@ function writePassword() {
   ) {
     // Combination 7
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(upperAndSpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(
+          Math.random() * upperAndSpecialChars.length
+        );
+        randomString += upperAndSpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(upperAndSpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'yes' &&
@@ -208,15 +209,14 @@ function writePassword() {
   ) {
     // Combination 8
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(onlyUpperCase, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * onlyUpperCase.length);
+        randomString += onlyUpperCase[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(onlyUpperCase, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -226,15 +226,16 @@ function writePassword() {
   ) {
     // Combination 9
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(lowerNumbersAndSpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(
+          Math.random() * lowerNumbersAndSpecialChars.length
+        );
+        randomString += lowerNumbersAndSpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(lowerNumbersAndSpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -244,15 +245,14 @@ function writePassword() {
   ) {
     // Combination 10
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(lowerAndNumbers, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * lowerAndNumbers.length);
+        randomString += lowerAndNumbers[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(lowerAndNumbers, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -262,15 +262,16 @@ function writePassword() {
   ) {
     // Combination 11
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(lowerAndSpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(
+          Math.random() * lowerAndSpecialChars.length
+        );
+        randomString += lowerAndSpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(lowerAndSpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -280,15 +281,14 @@ function writePassword() {
   ) {
     // Combination 12
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(onlyLowerCase, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * onlyLowerCase.length);
+        randomString += onlyLowerCase[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(onlyLowerCase, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -298,15 +298,16 @@ function writePassword() {
   ) {
     // Combination 13
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(numbersAndSpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(
+          Math.random() * numbersAndSpecialChars.length
+        );
+        randomString += numbersAndSpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(numbersAndSpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -316,15 +317,14 @@ function writePassword() {
   ) {
     // Combination 14
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(onlyNumbers, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * onlyNumbers.length);
+        randomString += onlyNumbers[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(onlyNumbers, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -334,15 +334,14 @@ function writePassword() {
   ) {
     // Combination 15
     var randomString = '';
-    function generateRandomString(allChars, passLength) {
-      
+    function generateRandomString(onlySpecialChars, passLength) {
       for (var i = 0; i < passLength; i++) {
-        var randomIndex = Math.floor(Math.random() * allChars.length);
-        randomString += allChars[randomIndex];
-      }  
+        var randomIndex = Math.floor(Math.random() * onlySpecialChars.length);
+        randomString += onlySpecialChars[randomIndex];
+      }
     }
 
-    generateRandomString(allChars, passLength);
+    generateRandomString(onlySpecialChars, passLength);
     var passwordd = randomString;
   } else if (
     upperCase == 'no' &&
@@ -351,17 +350,17 @@ function writePassword() {
     specialChar == 'no'
   ) {
     // Combination 16
-    console.log("sorry we could not create a password for you passed on " + 
-    "these preferences")
+    console.log(
+      'Sorry we could not create a password for you passed on ' +
+        'these preferences'
+    );
   }
-  
   console.log(passwordd);
   console.log(randomString);
- // console.log(generatePassword());
+  // console.log(generatePassword());
   //var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-
-  passwordText.value = password;
+    var passwordText = document.querySelector('#password');
+    passwordText.value = passwordd;
 }
 
 // Add event listener to generate button
