@@ -12,6 +12,9 @@ This is a password generator that ask a user to input preferences in order to pr
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+- [Preview](#preview)
+- [TechnologiesUsed](#technologies-used)
+- [Deployment](#deployment)
 - [Contact](#contact)
 
 ## Description
@@ -44,6 +47,10 @@ This is what the user will see when they first see the page
 1. HTML
 2. CSS
 3. JavaScript
+
+## Deployment
+
+https://jweah2385.github.io/password-Generator/
 
 ## Contact
 
