@@ -9,13 +9,13 @@ function writePassword() {
   do {
     let passL = prompt(
       'How long do you want your password to be, it must ' +
-        'be between 8 to 128 characters'
+        'be between 8 to 128 characters.'
     );
     var passLength = Number(passL);
   } while (!(passLength >= 8 && passLength <= 128));
 
   alert(
-    'Now you will provide the types of characters that you want, click ok to continue'
+    'Now you will provide the types of characters that you want, click ok to continue.'
   );
 
   /*Where the users preferences will be taken, if the user does not enter yes or no 
@@ -25,8 +25,8 @@ function writePassword() {
     alert(
       'A series of questions will be asked about the specificity of the characters you ' +
         'want to add in your password, type yes if you would like to include them or no if would not like to include them.' +
-        'if you enter anything other than yes or no for atleast one of the prompts, you will be ' +
-        ' required to reenter your preferences. Click ok to continue'
+        ' If you enter anything other than yes or no for atleast one of the prompts, or if you enter no for all of the prompts, you will be ' +
+        ' required to reenter your preferences. Click ok to continue.'
     );
     var upperCase = prompt(
       'Do you want uppercase characters in your password'
@@ -345,22 +345,9 @@ function writePassword() {
         randomString += onlySpecialChars[randomIndex];
       }
     }
-
     generatePassword(onlySpecialChars, passLength);
     var passwordd = randomString;
-  } else if (
-    upperCase == 'no' &&
-    lowerCase == 'no' &&
-    numeric == 'no' &&
-    specialChar == 'no'
-  ) {
-    // Combination 16
-    console.log(
-      'Sorry we could not create a password for you passed on ' +
-        'these preferences'
-    );
   }
-
   /*We target the textarea and make the value of it equal the users input 
    this results in the user password displaying on the page*/
   var passwordText = document.querySelector('#password');

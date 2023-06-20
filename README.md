@@ -13,7 +13,7 @@ This is a password generator that ask a user to input preferences in order to pr
 - [Contributing](#contributing)
 - [License](#license)
 - [Preview](#preview)
-- [TechnologiesUsed](#technologies-used)
+- [Technologies Used](#technologies-used)
 - [Deployment](#deployment)
 - [Contact](#contact)
 
